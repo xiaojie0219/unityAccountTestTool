@@ -4,9 +4,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+//import javax.swing.JMenu;
+//import javax.swing.JMenuBar;
+//import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
@@ -15,11 +15,12 @@ public class MainFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel jTabbedPane = new JTabbedPane4MainFrame();
-	private JMenuBar menuBar;
-	private JMenu jmenuFile;
-	private JMenuItem open,quit;
+	//private JMenuBar menuBar;
+	//private JMenu jmenuFile;
+	//private JMenuItem open,quit;
 	MainFrame() {
 		super("接入测试工具");
+		/*
 		menuBar = new JMenuBar();
 		jmenuFile = new JMenu("配置文件(F)");
 		// 设置助记符为F，按下ALT + F 可以触发该菜单
@@ -37,7 +38,7 @@ public class MainFrame extends JFrame {
 
 		// 设置菜单栏，使用这种方式设置菜单栏可以不占用布局空间
 		setJMenuBar(menuBar);
-
+*/
 		add(jTabbedPane);
 		setBounds(100, 50, 640, 870);
 		setVisible(true);

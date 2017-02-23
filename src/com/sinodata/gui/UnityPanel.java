@@ -40,10 +40,10 @@ public class UnityPanel extends JPanel{
 //        setLayout(new GridLayout(5,1));
         setLayout(null);
 //        pack();
-        po.setBounds(10,10,600,40);
-        pt.setBounds(10, 60, 600, 360);
-        pte.setBounds(10, 410, 600, 320);
-        pf.setBounds(10, 740, 600, 30);
+        po.setBounds(10,10,600,60);
+        pt.setBounds(10, 70, 600, 370);
+        pte.setBounds(10, 430, 600, 320);
+        pf.setBounds(10, 760, 600, 30);
         
         pf.bt1.addActionListener(new ActionListener(){
 
@@ -57,7 +57,7 @@ public class UnityPanel extends JPanel{
 				pte.tf2.setText(paramcontent);//将参数加密后显示到文本框
 				
 				//发起HTTP请求，并获取响应内容
-				String url = pt.tf1.getText();
+				String url = po.tf3.getText() + pt.tf1.getText();
 				String param = pt.label2.getText() + "=" + pt.tf2.getText() + "&param_content=" + paramcontent;
 				String response = HttpRequest.sendPost(url, param);
 				pte.tf3.setText(response);//将未解密的响应内容显示到文本框

@@ -22,8 +22,9 @@ public class HttpRequest {
 	 */
 	public static String sendPost(String url,String param){
 		try{
-			String accessIpPort = pu.read("config.properties", "accessIpPort");
-			URL urls = new URL("http://" + accessIpPort + url);
+//			String accessIpPort = pu.read("config.properties", "accessIpPort");
+//			URL urls = new URL("http://" + accessIpPort + url);
+			URL urls = new URL("http://" + url);
 			HttpURLConnection uc = (HttpURLConnection) urls.openConnection();
 			uc.setRequestMethod("POST");
 			uc.setRequestProperty("content-type", "multipart/form-data");
@@ -64,8 +65,9 @@ public class HttpRequest {
 	 */
 	public static byte[] sendPost(String url,byte[] data){
 		try{
-			String accessIpPort = pu.read("config.properties", "accessIpPort");
-			URL urls = new URL("http://" + accessIpPort + url);
+//			String accessIpPort = pu.read("config.properties", "accessIpPort");
+//			URL urls = new URL("http://" + accessIpPort + url);
+			URL urls = new URL("http://" + url);
 			HttpURLConnection uc = (HttpURLConnection) urls.openConnection();
 			uc.setRequestMethod("POST");
 			uc.setRequestProperty("content-type", "multipart/form-data");

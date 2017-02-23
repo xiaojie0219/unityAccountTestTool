@@ -24,8 +24,8 @@ import com.sinodata.tools.PropertiesUtil;
 
 public class AccessPanel extends JPanel {
 	private JPanel jp1,jp2,jp3,jp4,jp5;
-    JLabel jp1_label1,jp1_label2,jp1_label3;
-    JTextField jp1_tf1,jp1_tf2,jp1_tf3;
+    JLabel jp1_label1,jp1_label2,jp1_label3,jp1_label4;
+    JTextField jp1_tf1,jp1_tf2,jp1_tf3,jp1_tf4;
     JLabel jp2_label1,jp2_label2;
     JLabel jp3_label1,jp3_label2;
     JLabel jp4_label1,jp4_label2,jp4_label3,jp4_label4;
@@ -48,11 +48,11 @@ public class AccessPanel extends JPanel {
 		add(jp5);
 		addActionListener();//调用监听事件方法
 		setLayout(null);
-		jp1.setBounds(10, 10, 600, 60);
-		jp2.setBounds(10, 80, 600, 160);
-		jp3.setBounds(10, 230, 600, 160);
-		jp4.setBounds(10, 410, 600, 320);
-		jp5.setBounds(10, 740, 600, 30);
+		jp1.setBounds(10, 10, 600, 75);
+		jp2.setBounds(10, 95, 600, 160);
+		jp3.setBounds(10, 250, 600, 160);
+		jp4.setBounds(10, 420, 600, 320);
+		jp5.setBounds(10, 750, 600, 30);
 	}
 
 	private void lanchPanel1(){
@@ -60,11 +60,16 @@ public class AccessPanel extends JPanel {
 		jp1_label1 = new JLabel("商家密钥：");
 		jp1_label2 = new JLabel("商家ID：");
 		jp1_label3 = new JLabel("接口请求地址中cmd:（例如queryCode）");
-		jp1_tf1 = new JTextField();
-		jp1_tf2 = new JTextField();
-		jp1_tf3 = new JTextField("queryPrize");
+		jp1_label4 = new JLabel("服务器IP:PORT");
+//		jp1_tf1 = new JTextField();
+//		jp1_tf2 = new JTextField();
 		jp1_tf1 = new JTextField(pu.read("config.properties", "pubSecretKey"));
 		jp1_tf2 = new JTextField(pu.read("config.properties", "agentId"));
+		jp1_tf3 = new JTextField("queryPrize");
+		jp1_tf4 = new JTextField(pu.read("config.properties", "accessIpPort"));
+		
+		jp1.add(jp1_label4);
+		jp1.add(jp1_tf4);
 		jp1.add(jp1_label1);
 		jp1.add(jp1_tf1);
 		jp1.add(jp1_label2);
@@ -72,7 +77,7 @@ public class AccessPanel extends JPanel {
 		jp1.add(jp1_label3);
 		jp1.add(jp1_tf3);
 		jp1.setBackground(Color.lightGray);
-		jp1.setLayout(new GridLayout(3,2));
+		jp1.setLayout(new GridLayout(4,2));
 		
 	}
 	private void lanchPanel2(){
@@ -225,7 +230,7 @@ public class AccessPanel extends JPanel {
 	 * 客户端需要在url中使用自己的partnerid替换”{0}”， 根据报文哈希算法计算出哈希结果替换”{1}”
 	 */
 	private String getRequestUrl(byte[] data ){
-		String strTmp = "/api/access/do?cmd=" + jp1_tf3.getText() 
+		String strTmp = jp1_tf4.getText() + "/api/access/do?cmd=" + jp1_tf3.getText() 
 				+ "&partnerId=" + jp1_tf2.getText() + "&hashType=md5&hash=" + getHash(data);
 		return strTmp;
 	}
